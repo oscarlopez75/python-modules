@@ -9,13 +9,19 @@ class dateFormatClass:
     dayName = None
     dayStr = None
     monthStr = None
+    allOk = True
 
 
 
     def __init__(self):
-        self.now = datetime.datetime.now() #Gets the current date
-        self.addZero()
-        self.formatDayMonth()
+        try:
+            self.now = datetime.datetime.now()  # Gets the current date
+        except:
+            self.allOk = False
+        else:
+            self.addZero()
+            self.formatDayMonth()
+
 
     #Adds a leading zero if the date or the month is less than 10
     def addZero(self):
@@ -39,17 +45,26 @@ class dateFormatClass:
 
     #You can use this for testing
     def displayDate(self):
-        print(self.now)
+        if self.allOk:
+            print(self.now)
+        else:
+            print("Error")
 
     #Returns the date in EU format
     def displayDateEu(self):
 
-        return self.day + "/" + self.month + "/" + self.year
+        if self.allOk:
+            return self.day + "/" + self.month + "/" + self.year
+        else:
+            return "Error"
 
     # Returns the date in US format
     def displayDateUs(self):
 
-        return self.month + "/" + self.day + "/" + self.year
+        if self.allOk:
+            return self.month + "/" + self.day + "/" + self.year
+        else:
+            return "Error"
 
     def getDayOfWeek(self, dayNumber):
 
@@ -73,16 +88,26 @@ class dateFormatClass:
 
     def displayDateEuSt(self):
 
-        return self.dayName + " " + self.dayStr + " of " + self.monthStr + ", " + self.year
-
+        if self.allOk:
+            return self.dayName + " " + self.dayStr + " of " + self.monthStr + ", " + self.year
+        else:
+            return "Error"
 
     def displayDateUsSt(self):
 
-        return self.dayName + " " + self.monthStr + " " + self.dayStr + ", " + self.year
+        if self.allOk:
+            return self.dayName + " " + self.monthStr + " " + self.dayStr + ", " + self.year
+        else:
+            return "Error"
 
     def dateJson(self):
 
-        dateJson = {"day_number": str(self.day), "month_number": str(self.month), "year": str(self.year)
+        if self.allOk:
+            dateJson = {"day_number": str(self.day), "month_number": str(self.month), "year": str(self.year)
             , "day_name": self.dayName, "day_sub": self.dayStr, "month_name": self.monthStr}
 
-        return dateJson
+            return dateJson
+        else:
+            dateJson = {"day_number": "Error", "month_number": "Error", "year": "Error"
+                , "day_name": "Error", "day_sub": "Error", "month_name": "Error"}
+            return dateJson
