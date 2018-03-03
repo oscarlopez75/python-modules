@@ -40,7 +40,8 @@ class dateFormatClass:
     #Gets the day name and the month
     def formatDayMonth(self):
         self.dayName = self.getDayOfWeek(self.now.weekday())
-        self.dayStr = self.day + self.getDaySub(self.now.day)
+        #self.dayStr = self.day + self.getDaySub(self.now.day)
+        self.dayStr = str(self.now.day) + self.getDaySub(self.now.day)
         self.monthStr = self.getMonth(self.now.month)
 
     #You can use this for testing
