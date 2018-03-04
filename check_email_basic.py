@@ -1,4 +1,5 @@
-from oscar_modules.check_email import check_email
+import re
+
 
 class check_email_basic:
 
@@ -6,7 +7,12 @@ class check_email_basic:
         self.email = email
 
     def check_email(self):
-        return check_email(self.email)
+        match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.email)
+
+        if match == None:
+            return False
+        else:
+            return True
 
 
 
