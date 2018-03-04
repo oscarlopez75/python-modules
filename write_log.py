@@ -1,6 +1,6 @@
 import json
 
-
+# writes a simple log file with entries. Creates the file if it does not exist or appends the log if it does exist
 def write_file(file, text):
     try:
         f = open(file, "a+")
@@ -11,6 +11,8 @@ def write_file(file, text):
         print("Error creating/writing the file " + file)
         return False
 
+# writes a simple log file with JSONentries.
+# Creates the file if it does not exist or appends the log if it does exist
 def write_file_json(file, jobject):
     try:
         with open(file, 'a+') as outfile:

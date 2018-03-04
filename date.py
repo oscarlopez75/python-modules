@@ -11,8 +11,6 @@ class dateFormatClass:
     monthStr = None
     allOk = True
 
-
-
     def __init__(self):
         try:
             self.now = datetime.datetime.now()  # Gets the current date
@@ -22,8 +20,7 @@ class dateFormatClass:
             self.addZero()
             self.formatDayMonth()
 
-
-    #Adds a leading zero if the date or the month is less than 10
+    # Adds a leading zero if the date or the month is less than 10
     def addZero(self):
         if self.now.day < 10:
             self.day = "0" + str(self.now.day)
@@ -37,21 +34,21 @@ class dateFormatClass:
 
         self.year = str(self.now.year)
 
-    #Gets the day name and the month
+    # Gets the day name and the month
     def formatDayMonth(self):
         self.dayName = self.getDayOfWeek(self.now.weekday())
-        #self.dayStr = self.day + self.getDaySub(self.now.day)
+        # self.dayStr = self.day + self.getDaySub(self.now.day)
         self.dayStr = str(self.now.day) + self.getDaySub(self.now.day)
         self.monthStr = self.getMonth(self.now.month)
 
-    #You can use this for testing
+    # You can use this for testing
     def displayDate(self):
         if self.allOk:
             print(self.now)
         else:
             print("Error")
 
-    #Returns the date in EU format
+    # Returns the date in EU format
     def displayDateEu(self):
 
         if self.allOk:
@@ -87,6 +84,7 @@ class dateFormatClass:
 
         return monthName[month - 1]
 
+    # Returns the date in EU format as Sunday 4th of March, 2018
     def displayDateEuSt(self):
 
         if self.allOk:
@@ -94,6 +92,7 @@ class dateFormatClass:
         else:
             return "Error"
 
+    # Displays the date in US format as Sunday March 4th, 2018
     def displayDateUsSt(self):
 
         if self.allOk:
@@ -101,11 +100,12 @@ class dateFormatClass:
         else:
             return "Error"
 
+    # returns a JSON object
     def dateJson(self):
 
         if self.allOk:
             dateJson = {"day_number": str(self.day), "month_number": str(self.month), "year": str(self.year)
-            , "day_name": self.dayName, "day_sub": self.dayStr, "month_name": self.monthStr}
+                , "day_name": self.dayName, "day_sub": self.dayStr, "month_name": self.monthStr}
 
             return dateJson
         else:
