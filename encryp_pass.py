@@ -56,4 +56,4 @@ if __name__ == "__main__":
     if arguments >= 5:
         print(getParams(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]))
     else:
-        print("Number of arguments invalid")
+        print("Invalid number of arguments")
