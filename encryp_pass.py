@@ -2,10 +2,7 @@ from passlib.hash import pbkdf2_sha512
 from passlib.hash import pbkdf2_sha256
 import sys
 
-#password = ""
-#password_hash = ""
-#mode = ""
-#action = ""
+
 
 def getParams(param1, param2, param3, param4):
     global password
@@ -33,17 +30,17 @@ def validate_256():
     global password
     global password_hash
 
-    passOk = pbkdf2_sha256.verify(password, password_hash)
+    return pbkdf2_sha256.verify(password, password_hash)
 
-    return passOk
+
 
 def validate_512():
     global password
     global password_hash
 
-    passOk = pbkdf2_sha512.verify(password, password_hash)
+    return pbkdf2_sha512.verify(password, password_hash)
 
-    return passOk
+
 
 def create_256():
     global password
